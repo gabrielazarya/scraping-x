@@ -24,14 +24,15 @@ with open("twitter_cookies.pkl", "rb") as f:
 
 # Refresh halaman setelah cookie ditambahkan
 # driver.get("https://twitter.com/search?q=perang%20dagang%20amerika%20dan%20china%20lang%3Aid&src=typed_query&f=live")
-driver.get("https://twitter.com/search?q=tarif%20dagang%20amerika%20china%20lang%3Aid&src=typed_query&f=live")
+# driver.get("https://twitter.com/search?q=tarif%20dagang%20amerika%20china%20lang%3Aid&src=typed_query&f=live")
+driver.get("https://twitter.com/search?q=perang%20tarif%20amerika%20china%20lang%3Aid&src=typed_query&f=live")
 time.sleep(5)
 
 # Mulai scraping
 tweets = set()
 last_height = driver.execute_script("return document.body.scrollHeight")
 
-while len(tweets) < 500:  # Ganti jadi 5000 jika perlu
+while len(tweets) < 500:  
     elements = driver.find_elements(By.XPATH, '//div[@data-testid="tweetText"]')
     for el in elements:
         tweets.add(el.text)
@@ -48,5 +49,5 @@ driver.quit()
 
 # Simpan hasil
 df = pd.DataFrame(tweets, columns=["text"])
-df.to_csv("tweets_selenium2.csv", index=False)
+df.to_csv("tweets_selenium3.csv", index=False)
 print(f"Selesai. Total tweet: {len(df)}")

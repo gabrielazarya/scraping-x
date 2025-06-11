@@ -121,7 +121,7 @@ def predict_text(text):
     return label_name
 
 # Contoh
-sample_text = "china selalu di hati"
+sample_text = "china lebih unggul dalam menghadapi perang dagang ini"
 prediction = predict_text(sample_text)
 print(f"\nPrediksi untuk teks: '{sample_text}' -> {prediction}")
 
